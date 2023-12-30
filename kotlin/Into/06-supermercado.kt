@@ -19,8 +19,9 @@ fun main() {
 
     //processos
     if (categoriaProdutoHigiene == "S" && unidades >= 3){
-        val desconto: Double = precoProduto / 0.50
-        val totalaPagar = (precoProduto * unidades) - desconto
+        val desconto: Double = precoProduto * (50.0 / 100)
+        val totalaPagar = (precoProduto * unidades) - (desconto * unidades)
+
         println("Total a pagar com desconto ${totalaPagar}")
 
     }else{
