@@ -9,6 +9,9 @@ fun main() {
 
     //fez a parte então testa!!
 
+
+
+    // Lista para armazenar as tarefas
     val tasks = mutableListOf<String>()
 
     while (true){
@@ -22,6 +25,7 @@ fun main() {
         when(readln().toInt()){
 
             1 -> {
+                // Adição de uma nova tarefa
                 println("Tarefa a ser adicionada: ")
                 tasks.add(readln())
                 //verificar se está vazio
@@ -37,10 +41,11 @@ fun main() {
                     println(listt)
                 }
 
-                //remover tarefa
+                // Lê a opção do usuário para remover a tarefa
                 print("Tarefa numero: ")
                 val opcao = readln().toInt()
 
+                // Verifica se a tarefa selecionada existe antes de removê-la
                 if ( opcao == 1){
                     tasks.remove(tasks[0])
                     println("Tarefa removida com sucesso!")
@@ -48,6 +53,7 @@ fun main() {
                 }else println("Tarefa inesostente!")
             }
             3 -> {
+                // Listagem de todas as tarefas
                 for (i in 1.. tasks.size){
 
                     val listt = "$i - ${tasks[i - 1]}"
@@ -56,8 +62,15 @@ fun main() {
                 }
 
             }
-            4 -> return
+            4 -> return // Encerra o programa quando o usuário escolhe sair
 
         }
     }
+}
+
+//implementar prioridade de tarefas
+enum class Prioridade{
+    Alta,
+    Media,
+    Baixa
 }
