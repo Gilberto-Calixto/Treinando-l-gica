@@ -1,5 +1,7 @@
 package Into
 
+import java.awt.Component
+
 fun main() {
 
     //dividir pra conquistar
@@ -27,7 +29,32 @@ fun main() {
             1 -> {
                 // Adição de uma nova tarefa
                 println("Tarefa a ser adicionada: ")
-                tasks.add(readln())
+                val addTarefa = readln()
+
+                //adicionando prioridade
+                println("""Prioridade da tarefa: 
+                    |1 - Alta
+                    |2 - Média
+                    |3 - Baixa
+                """.trimMargin())
+                val opPrioridade = readln().toInt()
+
+                //add descrição com o data class e prioridade
+
+
+                if (opPrioridade == 1){
+                    println("Descrição da tarefa: ")
+                    val descr = Task(Prioridade.Alta, readln())
+                    val resp = descr.descricao
+
+                    tasks.add(addTarefa + " || Prioridade: " + Prioridade.Alta + " \nDescrição: " + resp)
+
+                }else if(opPrioridade == 2){
+                    tasks.add(addTarefa + " || Prioridade: " + Prioridade.Media)
+                }else if(opPrioridade == 3){
+                    tasks.add(addTarefa + " || Prioridade: " + Prioridade.Baixa)
+                } else println("Opção não existente.")
+
                 //verificar se está vazio
                 //mensagem de tarefa adicionada com sucesso
             }
@@ -74,3 +101,5 @@ enum class Prioridade{
     Media,
     Baixa
 }
+
+data class Task(val prioridad: Prioridade, var descricao: String)
